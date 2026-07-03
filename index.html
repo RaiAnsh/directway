@@ -1760,22 +1760,94 @@
     </style>
   </section>
 
-  <!-- ─── CTA ───────────────────────────────────────────── -->
+  <!-- ─── CTA + FORM ──────────────────────────────────────── -->
   <section id="cta" aria-labelledby="cta-title">
-    <div style="position:relative;z-index:1">
+    <div style="position:relative;z-index:1;width:100%;">
       <span class="section-eyebrow" style="justify-content:center;display:flex;margin-bottom:16px">Get Started</span>
       <h2 class="cta-title" id="cta-title">Ready to Move?</h2>
-      <p class="cta-sub">Let's make it stress-free. Get your free, no-obligation quote in minutes.</p>
-      <div class="cta-buttons">
-        <a href="mailto:Directwaymovers@gmail.com" class="btn-cta">
-          Get a Free Quote
-        </a>
-        <a href="tel:16136981021" class="btn-cta-outline">
-          Call +1 (613) 698-1021
-        </a>
+      <p class="cta-sub">Fill out the form below and we'll get back to you with a free quote.</p>
+
+      <!-- Quote Form -->
+      <div style="max-width:560px;margin:0 auto;">
+        <form id="quoteForm" style="display:flex;flex-direction:column;gap:12px;">
+
+          <input type="text" name="name" placeholder="Full Name" required
+            style="width:100%;padding:16px 20px;border-radius:12px;border:1.5px solid rgba(255,255,255,.15);background:rgba(255,255,255,.08);color:#fff;font-size:15px;font-family:inherit;outline:none;transition:border-color .2s;"
+            onfocus="this.style.borderColor='rgba(249,115,22,.7)'" onblur="this.style.borderColor='rgba(255,255,255,.15)'" />
+
+          <input type="email" name="email" placeholder="Email Address" required
+            style="width:100%;padding:16px 20px;border-radius:12px;border:1.5px solid rgba(255,255,255,.15);background:rgba(255,255,255,.08);color:#fff;font-size:15px;font-family:inherit;outline:none;transition:border-color .2s;"
+            onfocus="this.style.borderColor='rgba(249,115,22,.7)'" onblur="this.style.borderColor='rgba(255,255,255,.15)'" />
+
+          <input type="tel" name="phone" placeholder="Phone Number" required
+            style="width:100%;padding:16px 20px;border-radius:12px;border:1.5px solid rgba(255,255,255,.15);background:rgba(255,255,255,.08);color:#fff;font-size:15px;font-family:inherit;outline:none;transition:border-color .2s;"
+            onfocus="this.style.borderColor='rgba(249,115,22,.7)'" onblur="this.style.borderColor='rgba(255,255,255,.15)'" />
+
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+            <input type="text" name="moving_from" placeholder="Moving From" required
+              style="width:100%;padding:16px 20px;border-radius:12px;border:1.5px solid rgba(255,255,255,.15);background:rgba(255,255,255,.08);color:#fff;font-size:15px;font-family:inherit;outline:none;transition:border-color .2s;"
+              onfocus="this.style.borderColor='rgba(249,115,22,.7)'" onblur="this.style.borderColor='rgba(255,255,255,.15)'" />
+            <input type="text" name="moving_to" placeholder="Moving To" required
+              style="width:100%;padding:16px 20px;border-radius:12px;border:1.5px solid rgba(255,255,255,.15);background:rgba(255,255,255,.08);color:#fff;font-size:15px;font-family:inherit;outline:none;transition:border-color .2s;"
+              onfocus="this.style.borderColor='rgba(249,115,22,.7)'" onblur="this.style.borderColor='rgba(255,255,255,.15)'" />
+          </div>
+
+          <input type="date" name="move_date" placeholder="Preferred Move Date"
+            style="width:100%;padding:16px 20px;border-radius:12px;border:1.5px solid rgba(255,255,255,.15);background:rgba(255,255,255,.08);color:rgba(255,255,255,.7);font-size:15px;font-family:inherit;outline:none;transition:border-color .2s;color-scheme:dark;"
+            onfocus="this.style.borderColor='rgba(249,115,22,.7)'" onblur="this.style.borderColor='rgba(255,255,255,.15)'" />
+
+          <textarea name="message" placeholder="Additional details (optional)" rows="3"
+            style="width:100%;padding:16px 20px;border-radius:12px;border:1.5px solid rgba(255,255,255,.15);background:rgba(255,255,255,.08);color:#fff;font-size:15px;font-family:inherit;outline:none;transition:border-color .2s;resize:vertical;"
+            onfocus="this.style.borderColor='rgba(249,115,22,.7)'" onblur="this.style.borderColor='rgba(255,255,255,.15)'"></textarea>
+
+          <button type="submit" id="submitBtn"
+            style="width:100%;padding:18px;border-radius:50px;background:var(--orange);color:#fff;font-size:17px;font-weight:700;font-family:inherit;cursor:pointer;border:none;transition:background .2s,transform .2s,box-shadow .2s;margin-top:4px;"
+            onmouseover="this.style.background='#EA6C10';this.style.transform='translateY(-2px)';this.style.boxShadow='0 12px 32px rgba(249,115,22,.45)'"
+            onmouseout="this.style.background='var(--orange)';this.style.transform='';this.style.boxShadow=''">
+            Get My Free Quote
+          </button>
+
+          <!-- Success message -->
+          <div id="formSuccess" style="display:none;background:rgba(34,197,94,.15);border:1.5px solid rgba(34,197,94,.4);border-radius:12px;padding:16px 20px;color:#4ade80;font-size:15px;font-weight:600;text-align:center;">
+            ✓ Thanks! We'll get back to you within 1 hour.
+          </div>
+        </form>
+
+        <p style="text-align:center;margin-top:20px;font-size:13px;color:rgba(255,255,255,.35);">
+          Or call us directly: <a href="tel:16136981021" style="color:rgba(255,255,255,.6);text-decoration:underline;">+1 (613) 698-1021</a>
+        </p>
       </div>
     </div>
   </section>
+
+  <script>
+    document.getElementById('quoteForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const name       = this.querySelector('[name="name"]').value;
+      const email      = this.querySelector('[name="email"]').value;
+      const phone      = this.querySelector('[name="phone"]').value;
+      const from       = this.querySelector('[name="moving_from"]').value;
+      const to         = this.querySelector('[name="moving_to"]').value;
+      const date       = this.querySelector('[name="move_date"]').value;
+      const message    = this.querySelector('[name="message"]').value;
+
+      const subject = encodeURIComponent('Quote Request from ' + name);
+      const body = encodeURIComponent(
+        'Hi Directway Movers,\n\n' +
+        'I would like to request a free moving quote.\n\n' +
+        'Name: ' + name + '\n' +
+        'Email: ' + email + '\n' +
+        'Phone: ' + phone + '\n' +
+        'Moving From: ' + from + '\n' +
+        'Moving To: ' + to + '\n' +
+        'Preferred Date: ' + (date || 'Flexible') + '\n' +
+        (message ? 'Additional Details: ' + message + '\n' : '') +
+        '\nPlease get back to me with a quote. Thank you!'
+      );
+
+      window.location.href = 'mailto:Directwaymovers@gmail.com?subject=' + subject + '&body=' + body;
+    });
+  </script>
 
   <!-- ─── FOOTER ────────────────────────────────────────── -->
   <footer id="footer" role="contentinfo">
